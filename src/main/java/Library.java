@@ -1,13 +1,16 @@
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Getter
 public class Library {
 
-    List<Rental> rentalsList = new ArrayList<>(); // Jacek
-    List<User> usersList = new ArrayList<>(); // Paweł
-    List<Book> booksList = new ArrayList<>(); // Olga
+    private final List<Rental> rentalsList = new ArrayList<>(); // Jacek
+    private final List<User> usersList = new ArrayList<>(); // Paweł
+    private final List<Book> booksList = new ArrayList<>(); // Olga
 
     public void addUser(User user) {
         boolean userExist = usersList.stream()
