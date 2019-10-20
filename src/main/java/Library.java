@@ -45,20 +45,34 @@ public class Library {
 
     //dodawanie nowych książek do zbioru biblioteki
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         List<Book> foundBook = booksList.stream()
-                .filter(a-> a.getTitle().equals(book.getTitle()))
+                .filter(a -> a.getTitle().equals(book.getTitle()))
                 .collect(Collectors.toList());
-        if (foundBook.size() == 0){
+        if (foundBook.size() == 0) {
             booksList.add(book);
-        }else{
+        } else {
             book.setCopies(foundBook.size() + 1);
             booksList.add(book);
         }
     }
 
     //usuwanie książek ze zbioru biblioteki
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         booksList.remove(book);
     }
+
+    public User searchUserID(String queryUserID) {
+        return usersList.stream()
+                .filter(a -> a.getIdUser().equals(queryUserID))
+                .findAny().orElse(null);
+    }
+
+    public Book searchBookID(String queryBookID) {
+        return booksList.stream()
+                .filter(a -> a.getIdBook().equals(queryBookID))
+                .findAny().orElse(null);
+    }
+
+
 }
