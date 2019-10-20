@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Library {
 
@@ -38,16 +39,16 @@ public class Library {
             rentalsList.add(rental);
             System.out.println("Nowe wypożyczenie!");
         }
-    private List<Book> books = new ArrayList<>(); // Olga
+    }
 
     //dodawanie nowych książek do zbioru dostępnych w bibliotece
     public void addBook(Book book){
-        books.add(book);
+        booksList.add(book);
     }
 
     //usuwanie książek ze zbioru dostępnych w bibliotece
     public void removeBook(Book book){
-        books.remove(book);
+        booksList.remove(book);
     }
 
 }
