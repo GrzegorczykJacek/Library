@@ -20,7 +20,6 @@ public class Library {
         }
     }
 
-
     public void removeUser(User user) {
         Optional<User> userExist = usersList.stream()
                 .filter(a -> a.getIdUser().equals(user.getIdUser()))
@@ -31,7 +30,6 @@ public class Library {
             usersList.remove(userExist.get());
         }
     }
-
 
     public void addRental(Book book, User user) {
         Rental rental = new Rental(user.getIdUser(), book.getIdBook());
@@ -45,12 +43,12 @@ public class Library {
     }
 
     //dodawanie nowych książek do zbioru dostępnych w bibliotece
-    public void addBook(Book book){
+    public void addBook(Book book) {
         booksList.add(book);
     }
 
     //usuwanie książek ze zbioru dostępnych w bibliotece
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         booksList.remove(book);
     }
 

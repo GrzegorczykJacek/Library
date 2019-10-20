@@ -46,6 +46,6 @@ public class LibraryTest {
         library.addRental(book1, user1);
 
         //then
-        assertEquals(1, library.rentalsList.size());
+        assertEquals(1, library.getRentalsList().size());
     }
 }
