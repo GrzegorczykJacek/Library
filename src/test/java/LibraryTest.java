@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -30,6 +33,21 @@ public class LibraryTest {
         assertEquals("Kowalski", library.getUsersList().get(0).getLastName());
         assertEquals("jan.kowalski@mail.pl", library.getUsersList().get(0).getEmail());
         assertEquals("Racławickie", library.getUsersList().get(0).getAdress().getStreet());
+    }
+    @Test
+    public void testRemoveUser(){
+        //given
+        Adress address = new Adress("Racławickie", "Lublin", "12-345","8","12");
+        User givUser = new User(1001L, "Jan", "Kowalski", "jan.kowalski@mail.pl", address);
+        Library library = new Library();
+        List<User> usersList = new ArrayList<>();
+        library.addUser(givUser);
+        //when
+        library.removeUser(givUser);
+
+        //then
+        assertEquals(0, library.getUsersList().size());
+
     }
     @Test
     public void testAddRental() {
