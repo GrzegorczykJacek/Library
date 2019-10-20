@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -40,7 +37,7 @@ public class LibraryTest {
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
         User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 121L);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
 
         //when
         library.addRental(book1, user1);
