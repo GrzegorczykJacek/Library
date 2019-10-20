@@ -1,13 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library {
+public class LibraryTest {
 
-    List<Rental> rentals = new ArrayList<>();
-    List<User> users = new ArrayList<>();
-
-
-    List<Book> books = new ArrayList<>();
 
 
     //given
@@ -17,4 +12,6 @@ public class Library {
     Book book4 = new Book("Gniew", "Zygmunt Miłoszewski", 131L);
     Book book5 = new Book("Ziarno prawdy", "Zygmunt Miłoszewski", 132L);
     Book book6 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 133L);
+
+    
 }
