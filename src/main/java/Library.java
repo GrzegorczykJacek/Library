@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Library {
 
@@ -17,7 +18,6 @@ public class Library {
         }
     }
 
-
     public void removeUser(User user) {
         Optional<User> userExist = usersList.stream()
                 .filter(a -> a.getIdUser().equals(user.getIdUser()))
@@ -28,7 +28,6 @@ public class Library {
             usersList.remove(userExist.get());
         }
     }
-
 
     public void addRental(Book book, User user) {
         Rental rental = new Rental(user.getIdUser(), book.getIdBook());
@@ -41,14 +40,22 @@ public class Library {
         }
     }
 
-    //dodawanie nowych książek do zbioru dostępnych w bibliotece
+    //dodawanie nowych książek do zbioru biblioteki
+
     public void addBook(Book book){
-        booksList.add(book);
+        List<Book> foundBook = booksList.stream()
+                .filter(a-> a.getTitle().equals(book.getTitle()))
+                .collect(Collectors.toList());
+        if (foundBook.size() == 0){
+            booksList.add(book);
+        }else{
+            book.setCopies(foundBook.size() + 1);
+            booksList.add(book);
+        }
     }
 
-    //usuwanie książek ze zbioru dostępnych w bibliotece
+    //usuwanie książek ze zbioru biblioteki
     public void removeBook(Book book){
         booksList.remove(book);
     }
-
 }
