@@ -3,6 +3,7 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Getter
 public class Library {
@@ -42,14 +43,22 @@ public class Library {
         }
     }
 
-    //dodawanie nowych książek do zbioru dostępnych w bibliotece
-    public void addBook(Book book) {
-        booksList.add(book);
+    //dodawanie nowych książek do zbioru biblioteki
+
+    public void addBook(Book book){
+        List<Book> foundBook = booksList.stream()
+                .filter(a-> a.getTitle().equals(book.getTitle()))
+                .collect(Collectors.toList());
+        if (foundBook.size() == 0){
+            booksList.add(book);
+        }else{
+            book.setCopies(foundBook.size() + 1);
+            booksList.add(book);
+        }
     }
 
-    //usuwanie książek ze zbioru dostępnych w bibliotece
-    public void removeBook(Book book) {
+    //usuwanie książek ze zbioru biblioteki
+    public void removeBook(Book book){
         booksList.remove(book);
     }
-
 }
