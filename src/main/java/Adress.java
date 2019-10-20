@@ -10,6 +10,15 @@ public class Adress {
     private String houseNumber;
     private String apartmentNumber;
 
+    public String toString(){
+        return "Kod pocztowy:  "+postCode+
+                " \nMiasto: "+city+
+                " \nUlica: "+street+
+                " \nNr domu: "+houseNumber+
+                " \nNr mieszkania "+apartmentNumber;
+
+    }
+
 
 
 }
