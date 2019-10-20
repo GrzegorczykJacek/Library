@@ -17,4 +17,13 @@ public class Book {
         return title +" "+ author +" "+ idBook + copies;
     }
 
+    public void setIdBook(Long idBook) {
+        IdBookValidator idBookValidator = new IdBookValidator();
+        boolean validate = idBookValidator.validate(idBook);
+        if (validate) {
+            this.idBook = idBook;
+        } else {
+            throw new IllegalArgumentException("Niepoprawny IdBook!");
+        }
+    }
 }

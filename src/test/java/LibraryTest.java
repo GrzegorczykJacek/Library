@@ -98,14 +98,14 @@ public class LibraryTest {
         assertTrue(library.getBooksList().contains(book1));
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testAddDuplicateBook(){
-        // given
-        Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
-        // when
-        library.addBook(book1);
-        library.addBook(book1);
-        // then
-    }
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testAddDuplicateBook(){
+//        // given
+//        Library library = new Library();
+//        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+//        // when
+//        library.addBook(book1);
+//        library.addBook(book1);
+//        // then
+//    }
 }

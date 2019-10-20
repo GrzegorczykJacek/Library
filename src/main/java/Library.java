@@ -10,7 +10,7 @@ public class Library {
 
     private final List<Rental> rentalsList = new ArrayList<>(); // Jacek
     private final List<User> usersList = new ArrayList<>(); // Paweł
-    private final List<Book> booksList = new ArrayList<>(); // Olga
+    protected final List<Book> booksList = new ArrayList<>(); // Olga
 
     public void addUser(User user) {
         boolean userExist = usersList.stream()
