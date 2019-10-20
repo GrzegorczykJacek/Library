@@ -45,4 +45,49 @@ public class LibraryTest {
         //then
         assertEquals(1, library.getRentalsList().size());
     }
+
+    @Test
+    public void testRemoveRental(){
+        // given
+        Library library = new Library();
+        Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
+        User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        // when
+        library.addRental(book1, user1);
+        library.removeRental(book1);
+        // then
+        assertEquals(0, library.getRentalsList().size());
+
+    }
+
+    @Test
+    public void testAddBook(){
+        // given
+        Library library = new Library();
+        Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
+        User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1,122L);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda",1, 123L);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        // when
+        // then
+        assertEquals(3,library.getBooksList().size());
+        assertEquals("Tylko martwi nie kłamią", library.getBooksList().get(0).getTitle());
+        assertTrue(library.getBooksList().contains(book1));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddDuplicateBook(){
+        // given
+        Library library = new Library();
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        // when
+        library.addBook(book1);
+        library.addBook(book1);
+        // then
+    }
 }

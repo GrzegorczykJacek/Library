@@ -43,22 +43,34 @@ public class Library {
         }
     }
 
+    public void removeRental(Book book) {
+        Optional<Rental> foundRental = rentalsList.stream()
+                .filter(a -> a.getBookID().equals(book.getIdBook()))
+                .findAny();
+        if (!foundRental.isPresent()) {
+            throw new IllegalArgumentException("Nie znaleziono wypożyczenia o podanym ID książki: " + book.getIdBook() + "!!!");
+        } else {
+            rentalsList.remove(foundRental.get()); // foundRental jest Optionalem - metoda get() zwraca jego zawartość
+            System.out.println("Książka została poprawnie zwrócona!!!");
+        }
+    }
+
     //dodawanie nowych książek do zbioru biblioteki
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         List<Book> foundBook = booksList.stream()
-                .filter(a-> a.getTitle().equals(book.getTitle()))
+                .filter(a -> a.getTitle().equals(book.getTitle()))
                 .collect(Collectors.toList());
-        if (foundBook.size() == 0){
+        if (foundBook.size() == 0) {
             booksList.add(book);
-        }else{
+        } else {
             book.setCopies(foundBook.size() + 1);
             booksList.add(book);
         }
     }
 
     //usuwanie książek ze zbioru biblioteki
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         booksList.remove(book);
     }
 }
