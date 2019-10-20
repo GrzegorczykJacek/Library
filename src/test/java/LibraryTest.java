@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 public class LibraryTest {
 
 
-
     //given
     Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 121L);
     Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 122L);
@@ -18,22 +17,17 @@ public class LibraryTest {
     Book book6 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 133L);
 
     @Test
-    public void testAddRental(){
+    public void testAddRental() {
         //given
         Library library = new Library();
-        Adress adress1 = new Adress("Polna","Lublin","20-860","22","33");
-        User user1 = new User(1L,"Jan","Kowalski","janek@wp.pl",adress1);
+        Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
+        User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
         Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 121L);
 
-
         //when
-        library.addRental(book1,user1);
+        library.addRental(book1, user1);
 
         //then
-        assertEquals(1,library.rentalsList.size());
-
-
-
-
+        assertEquals(1, library.rentalsList.size());
     }
 }
