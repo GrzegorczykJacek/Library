@@ -10,4 +10,8 @@ public class Book {
     private String author;
     private Long idBook;
 
+    public String toString(){
+        return title +" "+ author +" "+ idBook;
+    }
+
 }
