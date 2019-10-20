@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -32,6 +35,21 @@ public class LibraryTest {
         assertEquals("Racławickie", library.getUsersList().get(0).getAdress().getStreet());
     }
     @Test
+    public void testRemoveUser(){
+        //given
+        Adress address = new Adress("Racławickie", "Lublin", "12-345","8","12");
+        User givUser = new User(1001L, "Jan", "Kowalski", "jan.kowalski@mail.pl", address);
+        Library library = new Library();
+        List<User> usersList = new ArrayList<>();
+        library.addUser(givUser);
+        //when
+        library.removeUser(givUser);
+
+        //then
+        assertEquals(0, library.getUsersList().size());
+
+    }
+    @Test
     public void testAddRental() {
         //given
         Library library = new Library();
@@ -44,5 +62,50 @@ public class LibraryTest {
 
         //then
         assertEquals(1, library.getRentalsList().size());
+    }
+
+    @Test
+    public void testRemoveRental(){
+        // given
+        Library library = new Library();
+        Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
+        User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        // when
+        library.addRental(book1, user1);
+        library.removeRental(book1);
+        // then
+        assertEquals(0, library.getRentalsList().size());
+
+    }
+
+    @Test
+    public void testAddBook(){
+        // given
+        Library library = new Library();
+        Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
+        User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1,122L);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda",1, 123L);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        // when
+        // then
+        assertEquals(3,library.getBooksList().size());
+        assertEquals("Tylko martwi nie kłamią", library.getBooksList().get(0).getTitle());
+        assertTrue(library.getBooksList().contains(book1));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddDuplicateBook(){
+        // given
+        Library library = new Library();
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        // when
+        library.addBook(book1);
+        library.addBook(book1);
+        // then
     }
 }

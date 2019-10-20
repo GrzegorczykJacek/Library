@@ -43,6 +43,18 @@ public class Library {
         }
     }
 
+    public void removeRental(Book book) {
+        Optional<Rental> foundRental = rentalsList.stream()
+                .filter(a -> a.getBookID().equals(book.getIdBook()))
+                .findAny();
+        if (!foundRental.isPresent()) {
+            throw new IllegalArgumentException("Nie znaleziono wypożyczenia o podanym ID książki: " + book.getIdBook() + "!!!");
+        } else {
+            rentalsList.remove(foundRental.get()); // foundRental jest Optionalem - metoda get() zwraca jego zawartość
+            System.out.println("Książka została poprawnie zwrócona!!!");
+        }
+    }
+
     //dodawanie nowych książek do zbioru biblioteki
 
     public void addBook(Book book) {
