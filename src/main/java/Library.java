@@ -64,14 +64,20 @@ public class Library {
 
     // dodawanie nowych książek do zbioru biblioteki
     public void addBook(Book book) {
-        List<Book> foundBook = booksList.stream()
-                .filter(a -> a.getTitle().equals(book.getTitle()))
+        List<Book> foundDuplicate = booksList.stream()
+                .filter(a->a.getIdBook().equals(book.getIdBook()))
                 .collect(Collectors.toList());
-        if (foundBook.size() == 0) {
-            booksList.add(book);
-        } else {
-            book.setCopies(foundBook.size() + 1);
-            booksList.add(book);
+        if (foundDuplicate.size()==0){
+
+            List<Book> foundBook = booksList.stream()
+                    .filter(a -> a.getTitle().equals(book.getTitle()))
+                    .collect(Collectors.toList());
+            if (foundBook.size() == 0) {
+                booksList.add(book);
+            } else {
+                book.setCopies(foundBook.size() + 1);
+                booksList.add(book);
+            }
         }
     }
 

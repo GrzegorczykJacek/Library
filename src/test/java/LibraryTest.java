@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,20 +31,6 @@ public class LibraryTest {
         assertEquals("jan.kowalski@mail.pl", library.getUsersList().get(0).getEmail());
         assertEquals("Racławickie", library.getUsersList().get(0).getAdress().getStreet());
     }
-
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testAddDuplicateUser(){
-//        // given
-//        Adress address = new Adress("Racławickie", "Lublin", "12-345","8","12");
-//        User givUser = new User( "Jan", "Kowalski", "jan.kowalski@mail.pl", address);
-//        User givUser2 = new User( "Janina", "Kowalska", "janina.kowalska@mail.pl", address);
-//        Library library = new Library();
-//        library.addUser(givUser);
-//        library.addUser(givUser2);
-//        // when
-//        // then
-//    }
-
     @Test
     public void testRemoveUser(){
         //given
@@ -148,6 +133,21 @@ public class LibraryTest {
     }
 
     @Test
+    public void testAddDuplicateBook(){
+        // given
+        Library library = new Library();
+        Book book = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        Book book2 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 1,121L);
+
+        // when
+        library.addBook(book);
+        library.addBook(book2);
+
+        // then
+        assertEquals(1,library.getBooksList().size());
+
+    }
+    @Test
     public void testRemoveBook(){
         // given
         Library library = new Library();
@@ -220,7 +220,7 @@ public class LibraryTest {
     public void testSearchBookID(){
         // given
         Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 16L);
         Book book2 = book1;
         // when
         library.addBook(book1);

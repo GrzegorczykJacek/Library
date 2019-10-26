@@ -1,6 +1,9 @@
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
+@AllArgsConstructor
 
 public class Book {
 
@@ -19,16 +22,17 @@ public class Book {
     }
 
     public String toString(){
-        return title +" "+ author +" "+ idBook + copies;
+        return title +" "+ author +" "+ copies+" " + idBook;
     }
 
-//    public void setIdBook(Long idBook) {
-//        IdBookValidator idBookValidator = new IdBookValidator();
-//        boolean validate = idBookValidator.validate(idBook);
-//        if (validate) {
-//            this.idBook = idBook;
-//        } else {
-//            throw new IllegalArgumentException("Niepoprawny IdBook!");
-//        }
-//    }
+    public void setIdBook(Long idBook) {
+        IdBookValidator idBookValidator = new IdBookValidator();
+        boolean validate = idBookValidator.validate(idBook);
+        if (validate) {
+            this.idBook = idBook;
+        } else {
+
+            throw new IllegalArgumentException("Niepoprawny IdBook!");
+        }
+    }
 }
