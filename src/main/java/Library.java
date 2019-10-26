@@ -19,6 +19,8 @@ public class Library {
                 .findAny().isPresent();
         if (!userExist) {
             usersList.add(user);
+        } else {
+            throw new IllegalArgumentException("Użytkownik o podanym ID: " + user.getIdUser() + " już jest w bazie ! ! !");
         }
     }
 
@@ -27,7 +29,7 @@ public class Library {
                 .filter(a -> a.getIdUser().equals(user.getIdUser()))
                 .findAny();
         if (!userExist.isPresent()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Użytkownik, którego próbujesz usunąć nie istnieje w bazie ! ! !");
         } else {
             usersList.remove(userExist.get());
         }
@@ -41,9 +43,13 @@ public class Library {
         if (!foundRental.isPresent()) {
             rentalsList.add(rental);
             System.out.println("Nowe wypożyczenie!");
+            System.out.println(book.toString());
+        } else {
+            throw new IllegalArgumentException("Książka, którą próbujesz wypożyczyć nie została jeszcze zwrócona ! ! !");
         }
     }
 
+    // Removes rental after a book return
     public void removeRental(Book book) {
         Optional<Rental> foundRental = rentalsList.stream()
                 .filter(a -> a.getBookID().equals(book.getIdBook()))
@@ -56,8 +62,7 @@ public class Library {
         }
     }
 
-    //dodawanie nowych książek do zbioru biblioteki
-
+    // dodawanie nowych książek do zbioru biblioteki
     public void addBook(Book book) {
         List<Book> foundBook = booksList.stream()
                 .filter(a -> a.getTitle().equals(book.getTitle()))
@@ -70,18 +75,27 @@ public class Library {
         }
     }
 
-    //usuwanie książek ze zbioru biblioteki
     public void removeBook(Book book) {
-        booksList.remove(book);
+        Optional<Book> foundBook = booksList.stream()
+                .filter(a -> a.getIdBook().equals(book.getIdBook()))
+                .findAny();
+        if (!foundBook.isPresent()) {
+            throw new IllegalArgumentException("Nie znaleziono książki o podanym ID książki: " + book.getIdBook() + "!!!");
+        } else {
+            booksList.remove(foundBook.get()); // foundBook jest Optionalem - metoda get() zwraca jego zawartość
+            System.out.println("Książka została poprawnie usunięta z listy biblioteki!!!");
+        }
     }
 
-    public User searchUserID(String queryUserID) {
+    // Returns User found by ID in users list
+    public User searchUserID(Long queryUserID) {
         return usersList.stream()
                 .filter(a -> a.getIdUser().equals(queryUserID))
                 .findAny().orElse(null);
     }
 
-    public Book searchBookID(String queryBookID) {
+    // Returns Book found by ID in books list
+    public Book searchBookID(Long queryBookID) {
         return booksList.stream()
                 .filter(a -> a.getIdBook().equals(queryBookID))
                 .findAny().orElse(null);
