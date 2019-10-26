@@ -1,5 +1,6 @@
 import lombok.Getter;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -84,6 +85,10 @@ public class Library {
         return booksList.stream()
                 .filter(a -> a.getIdBook().equals(queryBookID))
                 .findAny().orElse(null);
+    }
+
+    public void saveIntoFile()throws FileNotFoundException {
+
     }
 
 
