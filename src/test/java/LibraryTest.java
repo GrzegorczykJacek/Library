@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 public class LibraryTest {
 
-
     //given
     Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 1,121L);
     Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1,122L);
@@ -15,8 +14,6 @@ public class LibraryTest {
     Book book4 = new Book("Gniew", "Zygmunt Miłoszewski", 1,131L);
     Book book5 = new Book("Ziarno prawdy", "Zygmunt Miłoszewski", 1,132L);
     Book book6 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 2,133L);
-
-
 
     @Test
     public void testAddUser(){
@@ -98,14 +95,19 @@ public class LibraryTest {
         assertTrue(library.getBooksList().contains(book1));
     }
 
-//    @Test(expected = IllegalArgumentException.class)
-//    public void testAddDuplicateBook(){
-//        // given
-//        Library library = new Library();
-//        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
-//        // when
-//        library.addBook(book1);
-//        library.addBook(book1);
-//        // then
-//    }
+    @Test
+    public void testAddDuplicateBook(){
+        // given
+        Library library = new Library();
+        Book book = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        Book book2 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 1,121L);
+
+        // when
+        library.addBook(book);
+        library.addBook(book2);
+
+        // then
+        assertEquals(1,library.getBooksList().size());
+
+    }
 }

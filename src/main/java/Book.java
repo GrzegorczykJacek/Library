@@ -14,7 +14,7 @@ public class Book {
     private Long idBook;
 
     public String toString(){
-        return title +" "+ author +" "+ idBook + copies;
+        return title +" "+ author +" "+ copies+" " + idBook;
     }
 
     public void setIdBook(Long idBook) {
@@ -23,6 +23,7 @@ public class Book {
         if (validate) {
             this.idBook = idBook;
         } else {
+
             throw new IllegalArgumentException("Niepoprawny IdBook!");
         }
     }
