@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -221,7 +220,7 @@ public class LibraryTest {
     public void testSearchBookID(){
         // given
         Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 16L);
         Book book2 = book1;
         // when
         library.addBook(book1);

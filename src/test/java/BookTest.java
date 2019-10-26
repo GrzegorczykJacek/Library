@@ -46,8 +46,6 @@ public class BookTest {
     public void setIdBookTest(){
         //given
 
-
-
     }
 
 }
