@@ -61,7 +61,7 @@ public class Library {
         }
     }
 
-    //dodawanie nowych książek do zbioru biblioteki
+    // dodawanie nowych książek do zbioru biblioteki
     public void addBook(Book book) {
         List<Book> foundBook = booksList.stream()
                 .filter(a -> a.getTitle().equals(book.getTitle()))
@@ -86,13 +86,15 @@ public class Library {
         }
     }
 
-    public User searchUserID(String queryUserID) {
+    // Returns User found by ID in users list
+    public User searchUserID(Long queryUserID) {
         return usersList.stream()
                 .filter(a -> a.getIdUser().equals(queryUserID))
                 .findAny().orElse(null);
     }
 
-    public Book searchBookID(String queryBookID) {
+    // Returns Book found by ID in books list
+    public Book searchBookID(Long queryBookID) {
         return booksList.stream()
                 .filter(a -> a.getIdBook().equals(queryBookID))
                 .findAny().orElse(null);

@@ -199,4 +199,31 @@ public class LibraryTest {
         library.addBook(book1);
         // then
     }
+
+    @Test
+    public void testSearchUserID(){
+        // given
+        Library library = new Library();
+        Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
+        User user1 = new User(1L, "Jan", "Kowalski", "janek@wp.pl", adress1);
+        User user2 = user1;
+        // when
+        library.addUser(user1);
+        // then
+        assertEquals(user2, library.searchUserID(1L));
+        assertEquals(null, library.searchUserID(123L));
+    }
+
+    @Test
+    public void testSearchBookID(){
+        // given
+        Library library = new Library();
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        Book book2 = book1;
+        // when
+        library.addBook(book1);
+        // then
+        assertEquals(book1, library.searchBookID(121L));
+        assertEquals(null, library.searchBookID(123L));
+    }
 }
