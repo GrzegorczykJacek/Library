@@ -73,7 +73,7 @@ public class LibraryTest {
         library.removeUser(givUser);
         //then
     }
-
+//test addRental method
     @Test
     public void testAddRental() {
         //given
