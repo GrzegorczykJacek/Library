@@ -101,24 +101,38 @@ public class Library {
     }
 
     // Returns User found by ID in users list
-    public User searchUserID(Long queryUserID) {
+    public User searchUserID(Long queryUserID) throws NullPointerException {
+        try{
         return usersList.stream()
                 .filter(a -> a.getIdUser().equals(queryUserID))
-                .findAny().orElse(null);
+                .findAny().orElse(null);} catch (NullPointerException e){
+            System.out.printf("Nie znaleziono użytkownika o podanym ID: " + queryUserID);
+        }
+        return null;
     }
 
     // Returns Book found by ID in books list
-    public Book searchBookID(Long queryBookID) {
-        return booksList.stream()
-                .filter(a -> a.getIdBook().equals(queryBookID))
-                .findAny().orElse(null);
+    public Book searchBookID(Long queryBookID) throws NullPointerException {
+        try {
+            return booksList.stream()
+                    .filter(a -> a.getIdBook().equals(queryBookID))
+                    .findAny().orElse(null);
+        } catch (NullPointerException e){
+            System.out.println("Nie znaleziono książki o podanym ID: " + queryBookID);
+        }
+        return null;
     }
 
     // Returns Book found by title in books list
-    public Book searchBookTitle(String title) {
-        return booksList.stream()
-                .filter(a -> a.getTitle().equals(title))
-                .findAny().orElse(null);
+    public Book searchBookTitle(String title) throws NullPointerException {
+        try {
+            return booksList.stream()
+                    .filter(a -> a.getTitle().equals(title))
+                    .findAny().orElse(null);
+        } catch (NullPointerException e) {
+            System.out.println("Nie znaleziono książki o podanym tytule: '" + title + "'");
+        }
+        return null;
     }
 
 //    public void saveIntoFile()throws FileNotFoundException {

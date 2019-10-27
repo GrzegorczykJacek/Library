@@ -16,10 +16,10 @@ public class LibraryTest {
 //    Book book6 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 2,133L);
 
     @Test
-    public void testAddUser(){
+    public void testAddUser() {
         // given
-        Adress address = new Adress("Racławickie", "Lublin", "12-345","8","12");
-        User givUser = new User( "Jan", "Kowalski", "jan.kowalski@mail.pl", address);
+        Adress address = new Adress("Racławickie", "Lublin", "12-345", "8", "12");
+        User givUser = new User("Jan", "Kowalski", "jan.kowalski@mail.pl", address);
         Library library = new Library();
         library.addUser(givUser);
         // when
@@ -31,11 +31,12 @@ public class LibraryTest {
         assertEquals("jan.kowalski@mail.pl", library.getUsersList().get(0).getEmail());
         assertEquals("Racławickie", library.getUsersList().get(0).getAdress().getStreet());
     }
+
     @Test
-    public void testRemoveUser(){
+    public void testRemoveUser() {
         //given
-        Adress address = new Adress("Racławickie", "Lublin", "12-345","8","12");
-        User givUser = new User( "Jan", "Kowalski", "jan.kowalski@mail.pl", address);
+        Adress address = new Adress("Racławickie", "Lublin", "12-345", "8", "12");
+        User givUser = new User("Jan", "Kowalski", "jan.kowalski@mail.pl", address);
         Library library = new Library();
         List<User> usersList = new ArrayList<>();
         library.addUser(givUser);
@@ -46,9 +47,9 @@ public class LibraryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testRemoveNonExistingUser(){
+    public void testRemoveNonExistingUser() {
         //given
-        Adress address = new Adress("Racławickie", "Lublin", "12-345","8","12");
+        Adress address = new Adress("Racławickie", "Lublin", "12-345", "8", "12");
         User givUser = new User("Jan", "Kowalski", "jan.kowalski@mail.pl", address);
         Library library = new Library();
         List<User> usersList = new ArrayList<>();
@@ -88,7 +89,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void testRemoveRental(){
+    public void testRemoveRental() {
         // given
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
@@ -102,7 +103,7 @@ public class LibraryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testRemoveNonExistingRental(){
+    public void testRemoveNonExistingRental() {
         // given
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
@@ -116,45 +117,46 @@ public class LibraryTest {
     }
 
     @Test
-    public void testAddBook(){
+    public void testAddBook() {
         // given
         Library library = new Library();
         Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
         Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1);
-        Book book3 = new Book("Okularnik", "Katarzyna Bonda",1);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
         // when
         // then
-        assertEquals(3,library.getBooksList().size());
+        assertEquals(3, library.getBooksList().size());
         assertEquals("Tylko martwi nie kłamią", library.getBooksList().get(0).getTitle());
         assertTrue(library.getBooksList().contains(book1));
         System.out.println(library.getBooksList());
     }
 
     @Test
-    public void testAddDuplicateBook(){
+    public void testAddDuplicateBook() {
         // given
         Library library = new Library();
-        Book book = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
-        Book book2 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+        Book book = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
+        Book book2 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 1, 121L);
 
         // when
         library.addBook(book);
         library.addBook(book2);
 
         // then
-        assertEquals(1,library.getBooksList().size());
+        assertEquals(1, library.getBooksList().size());
 
     }
+
     @Test
-    public void testRemoveBook(){
+    public void testRemoveBook() {
         // given
         Library library = new Library();
         Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
         Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1);
-        Book book3 = new Book("Okularnik", "Katarzyna Bonda",1);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -170,13 +172,13 @@ public class LibraryTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testRemoveNonExistingBook(){
+    public void testRemoveNonExistingBook() {
         // given
         Library library = new Library();
         Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
         Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1);
-        Book book3 = new Book("Okularnik", "Katarzyna Bonda",1);
-        Book nonExistingBook = new Book("Okularnik", "Katarzyna Bonda",1);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1);
+        Book nonExistingBook = new Book("Okularnik", "Katarzyna Bonda", 1);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -204,7 +206,7 @@ public class LibraryTest {
 //    }
 
     @Test
-    public void testSearchUserID(){
+    public void testSearchUserID() {
         // given
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
@@ -218,7 +220,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void testSearchBookID(){
+    public void testSearchBookID() {
         // given
         Library library = new Library();
         Book bookToFind = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
@@ -232,10 +234,10 @@ public class LibraryTest {
     }
 
     @Test
-    public void testSearchBookTitle(){
+    public void testSearchBookTitle() {
         // given
         Library library = new Library();
-        Book book1 = new Book("Okularnik", "Katarzyna Bonda",1);
+        Book book1 = new Book("Okularnik", "Katarzyna Bonda", 1);
         Book book2 = new Book("Gniew", "Zygmunt Miłoszewski", 1);
         Book book3 = new Book("Ziarno prawdy", "Zygmunt Miłoszewski", 1);
         Book book4 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 2);
@@ -250,7 +252,4 @@ public class LibraryTest {
         assertEquals(book1, library.searchBookTitle("Okularnik"));
         assertEquals(book4, library.searchBookTitle("Uwikłanie"));
     }
-
-    // Mock library
-
 }

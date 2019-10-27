@@ -25,6 +25,7 @@ public class SaverIntoFile {
             saveBook.println(author);
         });
         saveBook.close();
+        System.out.println("Poprawnie zapisano bazę książek");
     }
 
     public void saveIntoFileUser(Library library) throws FileNotFoundException {
@@ -58,6 +59,7 @@ public class SaverIntoFile {
             saveUser.println(adressApartmentNumber);
         });
         saveUser.close();
+        System.out.println("Poprawnie zapisano bazę użytkowników");
     }
 
     public void saveIntoFileRental(Library library) throws FileNotFoundException {
@@ -80,5 +82,6 @@ public class SaverIntoFile {
             saveRental.println(localDeadLineString);
         });
         saveRental.close();
+        System.out.println("Poprawnie zapisano bazę wypożyczeń");
     }
 }
