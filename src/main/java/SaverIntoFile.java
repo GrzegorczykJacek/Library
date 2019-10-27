@@ -11,9 +11,8 @@ public class SaverIntoFile {
     private List<Rental> rentalList = new ArrayList<>();
 
     public void saveIntoFileBook() throws FileNotFoundException {
-        PrintWriter saveBook = new PrintWriter("Books.txt");
+        PrintWriter saveBook = new PrintWriter("Books.csv");
         bookList.forEach(Book -> {
-            //save.println("=================");
             Long idBook = Book.getIdBook();
             int copies = Book.getCopies();
             String title = Book.getTitle();
@@ -30,7 +29,7 @@ public class SaverIntoFile {
     }
 
     public void saveIntoFileUser() throws FileNotFoundException {
-        PrintWriter saveUser = new PrintWriter("User.txt");
+        PrintWriter saveUser = new PrintWriter("User.csv");
         userList.forEach(User -> {
             Long idUser = User.getIdUser();
             String firstName = User.getFirstName();
@@ -63,7 +62,7 @@ public class SaverIntoFile {
     }
 
     public void saveIntoFileRental() throws FileNotFoundException {
-        PrintWriter saveRental = new PrintWriter("User.txt");
+        PrintWriter saveRental = new PrintWriter("User.csv");
         rentalList.forEach(Rental -> {
             Long userID = Rental.getUserID();
             Long bookID = Rental.getBookID();

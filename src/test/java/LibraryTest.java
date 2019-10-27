@@ -215,7 +215,7 @@ public class LibraryTest {
         assertEquals(user2, library.searchUserID(8L));
         assertEquals(null, library.searchUserID(123L));
     }
-// komentarz
+
     @Test
     public void testSearchBookID(){
         // given
