@@ -58,7 +58,7 @@ public class LibraryTest {
         library.removeUser(givUser);
         //then
     }
-//test addRental method
+
     @Test
     public void testAddRental() {
         //given
@@ -220,13 +220,36 @@ public class LibraryTest {
     public void testSearchBookID(){
         // given
         Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 16L);
-        Book book2 = book1;
+        Book bookToFind = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Long bookID = bookToFind.getIdBook();
+        library.addBook(bookToFind);
         // when
-        library.addBook(book1);
         // then
-        System.out.println(library.getBooksList().get(0).getIdBook());
-        assertEquals(book1, library.searchBookID(16L));
+        System.out.println("Test search bookID: " + bookID);
+        assertEquals(bookToFind, library.searchBookID(bookID));
         assertEquals(null, library.searchBookID(123L));
     }
+
+    @Test
+    public void testSearchBookTitle(){
+        // given
+        Library library = new Library();
+        Book book1 = new Book("Okularnik", "Katarzyna Bonda",1);
+        Book book2 = new Book("Gniew", "Zygmunt Miłoszewski", 1);
+        Book book3 = new Book("Ziarno prawdy", "Zygmunt Miłoszewski", 1);
+        Book book4 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 2);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+        // when
+        // then
+        assertEquals(book2, library.searchBookTitle("Gniew"));
+        assertEquals(book3, library.searchBookTitle("Ziarno prawdy"));
+        assertEquals(book1, library.searchBookTitle("Okularnik"));
+        assertEquals(book4, library.searchBookTitle("Uwikłanie"));
+    }
+
+    // Mock library
+
 }

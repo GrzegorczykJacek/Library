@@ -1,6 +1,5 @@
 import lombok.Getter;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -107,9 +106,16 @@ public class Library {
                 .findAny().orElse(null);
     }
 
-    public void saveIntoFile()throws FileNotFoundException {
-
+    // Returns Book found by title in books list
+    public Book searchBookTitle(String title) {
+        return booksList.stream()
+                .filter(a -> a.getTitle().equals(title))
+                .findAny().orElse(null);
     }
+
+//    public void saveIntoFile()throws FileNotFoundException {
+//
+//    }
 
 
 }
