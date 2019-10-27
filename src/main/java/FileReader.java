@@ -17,43 +17,5 @@ public class FileReader {
            Book tmp = new Book(title,author,copies,idBook);
            library.addBook(tmp);
         }
-
-
-
-
     }
-
-
-    /*
-
-      public void read() throws FileNotFoundException {
-        Scanner odczyt = new Scanner(new File("Biblioteka.txt"));
-        int licznik = 0;
-        PlytaCD tmp;
-        List<Utwor> utwory = null;
-        String title = null;
-        String year = null;
-        while (odczyt.hasNextLine()) {
-            String line = odczyt.nextLine();
-            switch (line) {
-                case "---":
-                    licznik = 0;
-                    utwory = new ArrayList<>();
-                    break;
-                default:
-                    if (licznik == 0) {
-                        title = line;
-                    } else if (licznik == 1) {
-                        year = line;
-                        tmp = new PlytaCD(title, year, utwory);
-                        listaPlyt.add(tmp);
-                    } else {
-                        String[] tab = line.split("%");
-                        utwory.add(new Utwor(tab[0], tab[1], Double.valueOf(tab[2])));
-                    }
-                    licznik++;
-            }
-        }
-    }
-     */
 }
