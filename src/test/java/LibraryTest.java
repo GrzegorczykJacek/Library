@@ -130,6 +130,7 @@ public class LibraryTest {
         assertEquals(3,library.getBooksList().size());
         assertEquals("Tylko martwi nie kłamią", library.getBooksList().get(0).getTitle());
         assertTrue(library.getBooksList().contains(book1));
+        System.out.println(library.getBooksList());
     }
 
     @Test
