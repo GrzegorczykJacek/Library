@@ -22,7 +22,7 @@ public class Book {
     }
 
     public String toString(){
-        return title +" "+ author +" "+ copies+" " + idBook;
+        return "| " + title + " | " + author + " | " + copies + " szt. | book ID: " + idBook;
     }
 
     public void setIdBook(Long idBook) {
