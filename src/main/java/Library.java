@@ -61,12 +61,20 @@ public class Library {
         }
     }
 
+    // Returns number of rentals by given user
+    public int getNumOfRentals(User user) {
+        List<Rental> foundRentals = rentalsList.stream()
+                .filter(a -> a.getUserID().equals(user.getIdUser()))
+                .collect(Collectors.toCollection(ArrayList::new));
+        return foundRentals.size();
+    }
+
     // dodawanie nowych książek do zbioru biblioteki
     public void addBook(Book book) {
         List<Book> foundDuplicate = booksList.stream()
-                .filter(a->a.getIdBook().equals(book.getIdBook()))
+                .filter(a -> a.getIdBook().equals(book.getIdBook()))
                 .collect(Collectors.toList());
-        if (foundDuplicate.size()==0){
+        if (foundDuplicate.size() == 0) {
 
             List<Book> foundBook = booksList.stream()
                     .filter(a -> a.getTitle().equals(book.getTitle()))

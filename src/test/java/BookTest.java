@@ -36,7 +36,7 @@ public class BookTest {
         Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
 
         //when
-        String bookRecord = "Tylko martwi nie kłamią Katarzyna Bonda 2 121";
+        String bookRecord = "| Tylko martwi nie kłamią | Katarzyna Bonda | 2 szt. | book ID: 121";
 
         //then
         assertEquals(bookRecord, book1.toString());
