@@ -14,6 +14,7 @@ public class IdBookValidator extends Library {
                     .findAny().isPresent();
 
             if (idExist) {
+                System.out.println("Podane IdBook już istnieje");
                 return false;
             }
         }

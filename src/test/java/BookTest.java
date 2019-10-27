@@ -1,5 +1,8 @@
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class BookTest {
@@ -42,10 +45,14 @@ public class BookTest {
         assertEquals(bookRecord, book1.toString());
     }
 
-    @Test
-    public void setIdBookTest(){
-        //given
+    @Test(expected = IllegalArgumentException.class)
+    public void setNullIdBookTest(){
+
+        // given
+        Book book = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
+
+        // when
+        book.setIdBook(null);
 
     }
-
 }

@@ -138,7 +138,7 @@ public class LibraryTest {
         // given
         Library library = new Library();
         Book book = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
-        Book book2 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 1,121L);
+        Book book2 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2,121L);
 
         // when
         library.addBook(book);

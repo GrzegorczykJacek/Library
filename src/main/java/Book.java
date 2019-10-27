@@ -31,7 +31,6 @@ public class Book {
         if (validate) {
             this.idBook = idBook;
         } else {
-
             throw new IllegalArgumentException("Niepoprawny IdBook!");
         }
     }
