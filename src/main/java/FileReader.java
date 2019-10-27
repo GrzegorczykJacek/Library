@@ -1,6 +1,11 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class FileReader {
@@ -41,8 +46,22 @@ public class FileReader {
             library.addUser(user);
         }
     }
+// !!!!!!!!!!!!!!!!!!!!!! Dokończyć tą metodę !!!!!!!!!!!!
+    public void readRentalFile(Library library) throws FileNotFoundException, ParseException {
+        Scanner reader = new Scanner(new File("Rental.csv"));
+        while (reader.hasNextLine()){
+            String line = reader.nextLine();
+            String tab[] = line.split(";");
+            Long userID = Long.valueOf(tab[0]);
+            Long bookID = Long.valueOf(tab[1]);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localStart = LocalDate.from(formatter.parse(tab[2]));
+            SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
+            Date rentalDeadline = formatter2.parse(tab[3]);
 
-    public void readRentalFile(Library library){
+            Rental rental = new Rental(userID,bookID,localStart,rentalDeadline);
+       //     library.addRental(rental);
+        }
 
     }
 }

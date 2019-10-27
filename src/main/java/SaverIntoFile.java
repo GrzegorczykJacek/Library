@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,9 +71,13 @@ public class SaverIntoFile {
             saveRental.print(";");
             saveRental.print(bookID);
             saveRental.print(";");
-            saveRental.print(localStart);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String localStartString = localStart.format(formatter);
+            saveRental.print(localStartString);
             saveRental.print(";");
-            saveRental.println(rentalDeadline);
+            SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-MM-dd");
+            String localDeadLineString = formatter2.format(rentalDeadline);
+            saveRental.println(localDeadLineString);
         });
         saveRental.close();
     }
