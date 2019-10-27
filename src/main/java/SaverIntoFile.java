@@ -6,13 +6,10 @@ import java.util.Date;
 import java.util.List;
 
 public class SaverIntoFile {
-    private List<Book> bookList = new ArrayList<>();
-    private List<User> userList = new ArrayList<>();
-    private List<Rental> rentalList = new ArrayList<>();
 
-    public void saveIntoFileBook() throws FileNotFoundException {
+    public void saveIntoFileBook(Library library) throws FileNotFoundException {
         PrintWriter saveBook = new PrintWriter("Books.csv");
-        bookList.forEach(Book -> {
+        library.getBooksList().forEach(Book -> {
             Long idBook = Book.getIdBook();
             int copies = Book.getCopies();
             String title = Book.getTitle();
@@ -28,9 +25,9 @@ public class SaverIntoFile {
         saveBook.close();
     }
 
-    public void saveIntoFileUser() throws FileNotFoundException {
+    public void saveIntoFileUser(Library library) throws FileNotFoundException {
         PrintWriter saveUser = new PrintWriter("User.csv");
-        userList.forEach(User -> {
+        library.getUsersList().forEach(User -> {
             Long idUser = User.getIdUser();
             String firstName = User.getFirstName();
             String lastName = User.getLastName();
@@ -61,9 +58,9 @@ public class SaverIntoFile {
         saveUser.close();
     }
 
-    public void saveIntoFileRental() throws FileNotFoundException {
+    public void saveIntoFileRental(Library library) throws FileNotFoundException {
         PrintWriter saveRental = new PrintWriter("User.csv");
-        rentalList.forEach(Rental -> {
+        library.getRentalsList().forEach(Rental -> {
             Long userID = Rental.getUserID();
             Long bookID = Rental.getBookID();
             LocalDate localStart = Rental.getRentalStart();
