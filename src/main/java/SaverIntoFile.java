@@ -59,7 +59,7 @@ public class SaverIntoFile {
     }
 
     public void saveIntoFileRental(Library library) throws FileNotFoundException {
-        PrintWriter saveRental = new PrintWriter("User.csv");
+        PrintWriter saveRental = new PrintWriter("Rental.csv");
         library.getRentalsList().forEach(Rental -> {
             Long userID = Rental.getUserID();
             Long bookID = Rental.getBookID();
