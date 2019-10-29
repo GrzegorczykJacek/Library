@@ -1,17 +1,25 @@
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class UserMenu {
 
-    Library library = new Library();
-    PrintList printList = new PrintList();
-    SaverIntoFile saverIntoFile = new SaverIntoFile();
+    Library library = new Library(); // generates Library with Lists of: users, books and rentals
+    PrintList printList = new PrintList(); // prints to screen: users, books and rentals
+    SaverIntoFile saverIntoFile = new SaverIntoFile(); // saves data to hard drive
+    FileReader fileReader = new FileReader();
+
 
     Scanner scanner = new Scanner(System.in);
     String menu;
     String title;
 
-    public void printMenu() throws FileNotFoundException {
+    public void printMenu() throws FileNotFoundException, ParseException {
+
+        fileReader.readBookFile(library);
+        fileReader.readUserFile(library);
+        fileReader.readRentalFile(library);
+
         do {
             System.out.println("Wybierz pozycję z MENU i zatwierdź klawiszem ENTER: \n" +
                     "1 - ZAMKNIJ PROGRAM (i zapisz bazę na dysk)\n" +

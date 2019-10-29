@@ -22,6 +22,7 @@ public class FileReader {
             Book tmp = new Book(title, author, copies, idBook);
             library.addBook(tmp);
         }
+        System.out.println("Poprawnie załadowano listę książek");
     }
 
     public void readUserFile(Library library) throws FileNotFoundException {
@@ -45,8 +46,9 @@ public class FileReader {
             User user = new User(firstName, lastName, email, adress);
             library.addUser(user);
         }
+        System.out.println("Poprawnie załadowano listę użytkowników");
     }
-// !!!!!!!!!!!!!!!!!!!!!! Dokończyć tą metodę !!!!!!!!!!!!
+
     public void readRentalFile(Library library) throws FileNotFoundException, ParseException {
         Scanner reader = new Scanner(new File("Rental.csv"));
         while (reader.hasNextLine()){
@@ -60,8 +62,8 @@ public class FileReader {
             Date rentalDeadline = formatter2.parse(tab[3]);
 
             Rental rental = new Rental(userID,bookID,localStart,rentalDeadline);
-       //     library.addRental(rental);
+            library.addRental(library.searchBookID(rental.getBookID()), library.searchUserID(rental.getUserID()));
         }
-
+        System.out.println("Poprawnie załadowano listę wypożyczeń");
     }
 }
