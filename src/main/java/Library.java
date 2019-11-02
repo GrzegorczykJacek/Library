@@ -41,8 +41,8 @@ public class Library {
                 .findAny();
         if (!foundRental.isPresent()) {
             rentalsList.add(rental);
-            System.out.println("Nowe wypożyczenie!");
-            System.out.println(book.toString());
+//            System.out.println("Nowe wypożyczenie!");
+//            System.out.println(book.toString());
         } else {
             throw new IllegalArgumentException("Książka, którą próbujesz wypożyczyć nie została jeszcze zwrócona ! ! !");
         }

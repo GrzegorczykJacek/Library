@@ -66,7 +66,7 @@ public class LibraryTest {
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
         User user1 = new User("Jan", "Kowalski", "janek@wp.pl", adress1);
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
 
         //when
         library.addRental(book1, user1);
@@ -81,7 +81,7 @@ public class LibraryTest {
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
         User user1 = new User("Jan", "Kowalski", "janek@wp.pl", adress1);
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
         //when
         library.addRental(book1, user1);
         library.addRental(book1, user1);
@@ -94,7 +94,7 @@ public class LibraryTest {
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
         User user1 = new User("Jan", "Kowalski", "janek@wp.pl", adress1);
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
         // when
         library.addRental(book1, user1);
         library.removeRental(book1);
@@ -108,8 +108,8 @@ public class LibraryTest {
         Library library = new Library();
         Adress adress1 = new Adress("Polna", "Lublin", "20-860", "22", "33");
         User user1 = new User("Jan", "Kowalski", "janek@wp.pl", adress1);
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
-        Book book2 = new Book("Gniew", "Zygmunt Miłoszewski", 1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
+        Book book2 = new Book("Gniew", "Zygmunt Miłoszewski", 1, 122L);
         // when
         library.addRental(book1, user1);
         library.removeRental(book2);
@@ -120,9 +120,9 @@ public class LibraryTest {
     public void testAddBook() {
         // given
         Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
-        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1);
-        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
+        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1, 122L);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1, 123L);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -154,9 +154,9 @@ public class LibraryTest {
     public void testRemoveBook() {
         // given
         Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
-        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1);
-        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
+        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1, 123L);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1, 124L);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -175,10 +175,10 @@ public class LibraryTest {
     public void testRemoveNonExistingBook() {
         // given
         Library library = new Library();
-        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
-        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1);
-        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1);
-        Book nonExistingBook = new Book("Okularnik", "Katarzyna Bonda", 1);
+        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
+        Book book2 = new Book("Pochłaniacz", "Katarzyna Bonda", 1, 122L);
+        Book book3 = new Book("Okularnik", "Katarzyna Bonda", 1, 123L);
+        Book nonExistingBook = new Book("Okularnik", "Katarzyna Bonda", 1, 124L);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -198,7 +198,7 @@ public class LibraryTest {
 //    public void testAddDuplicateBook(){
 //        // given
 //        Library library = new Library();
-//        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+//        Book book1 = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
 //        // when
 //        library.addBook(book1);
 //        library.addBook(book1);
@@ -223,7 +223,7 @@ public class LibraryTest {
     public void testSearchBookID() {
         // given
         Library library = new Library();
-        Book bookToFind = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2);
+        Book bookToFind = new Book("Tylko martwi nie kłamią", "Katarzyna Bonda", 2, 121L);
         Long bookID = bookToFind.getIdBook();
         library.addBook(bookToFind);
         // when
@@ -237,10 +237,10 @@ public class LibraryTest {
     public void testSearchBookTitle() {
         // given
         Library library = new Library();
-        Book book1 = new Book("Okularnik", "Katarzyna Bonda", 1);
-        Book book2 = new Book("Gniew", "Zygmunt Miłoszewski", 1);
-        Book book3 = new Book("Ziarno prawdy", "Zygmunt Miłoszewski", 1);
-        Book book4 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 2);
+        Book book1 = new Book("Okularnik", "Katarzyna Bonda", 1, 121L);
+        Book book2 = new Book("Gniew", "Zygmunt Miłoszewski", 1, 122L);
+        Book book3 = new Book("Ziarno prawdy", "Zygmunt Miłoszewski", 1, 123L);
+        Book book4 = new Book("Uwikłanie", "Zygmunt Miłoszewski", 2, 124L);
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);

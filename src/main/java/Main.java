@@ -6,7 +6,7 @@ public class Main {
 
         System.out.println("Library 1.0\n" +
                 "Program zarządza biblioteką książek za pomocą prostego MENU\n" +
-                "_______________________________________________________________");
+                "_______________________________________________________________\n");
 
         UserMenu userMenu = new UserMenu();
         userMenu.printMenu();

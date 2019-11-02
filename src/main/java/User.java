@@ -23,7 +23,7 @@ public class User {
                 " \nImie: "+firstName+
                 " \nNazwisko: "+lastName+
                 " \nEmail: "+email+
-                " \n: "+adress.toString();
+                " \n"+adress.toString();
     }
 
 }

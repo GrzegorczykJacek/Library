@@ -21,7 +21,7 @@ public class UserMenu {
         fileReader.readRentalFile(library);
 
         do {
-            System.out.println("Wybierz pozycję z MENU i zatwierdź klawiszem ENTER: \n" +
+            System.out.println("\nWybierz pozycję z MENU i zatwierdź klawiszem ENTER: \n" +
                     "1 - ZAMKNIJ PROGRAM (i zapisz bazę na dysk)\n" +
                     "2 - wyszukaj książkę w bibliotece\n" +
                     "3 - wyszukaj użytkownika w bibliotece\n" +
@@ -70,9 +70,12 @@ public class UserMenu {
                     title = scanner.nextLine();
                     System.out.printf("AUTOR: ");
                     String author = scanner.nextLine();
+                    System.out.printf("ID: ");
+                    Long bookID = scanner.nextLong();
+                    scanner.nextLine(); // clears scanner buffer from empty
                     System.out.printf("ILOŚĆ EGZEMPLARZY: ");
                     int copies = scanner.nextInt();
-                    library.addBook(new Book(title, author, copies));
+                    library.addBook(new Book(title, author, copies, bookID));
                     System.out.println("Pomyślnie dodano nową książkę!\n");
                     scanner.nextLine(); // clears scanner buffer from empty
                     break;

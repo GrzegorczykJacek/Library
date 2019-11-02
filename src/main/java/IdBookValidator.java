@@ -1,4 +1,3 @@
-import java.awt.*;
 
 public class IdBookValidator extends Library {
     public boolean validate(Long idBook) {
@@ -6,7 +5,7 @@ public class IdBookValidator extends Library {
         // idBook nie może zostać puste
         if (idBook == null) {
             return false;
-        }else{
+        } else {
 
             // idBook nie może się powtórzyć
             boolean idExist = getBooksList().stream()
